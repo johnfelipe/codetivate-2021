@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#audio-button {
+    font-size: 20px;
+    padding: 10px 30px 10px 30px;
+    margin-left: -73px;
+    border-radius: 6px;
+    border: 0px solid black;
+    font-family: "Red Hat Display";
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+#audio-button:hover {
+    background-color: black;
+  }

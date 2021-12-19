@@ -1,0 +1,10 @@
+psutil
+matplotlib
+tensorflow
+fer
+pyrebase
+wtforms==2.2.1
+flask
+dash==1.6.1
+dash-bootstrap-components==0.10.5
+jwt

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/dashboard.css">
+    <link rel="stylesheet" href="static/audio.css">
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css" crossorigin="anonymous">
+
+    <title>Fusion Assistant</title>
+  </head>
+  <body>
+	
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<!-- <span style="font-size:30px;cursor:pointer;color:#FFF;" onclick="openNav()">&#9776;</span> -->
+		<div class="container">
+			<a class="navbar-brand" href="/">
+				<img src="static/logo.png" height="45px">
+				Fusion Assistant
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav ml-auto flex-nowrap mt-3 mt-md-0">
+					<li class="nav-item mr-sm-2">
+						<a class="nav-link btn btn-light text-dark" href="https://github.com/ozeliger/xed" target="_blank">
+							<img src="https://emojis.slackmojis.com/emojis/images/1450822151/257/github.png" width="15px">
+							GitHub Repo
+						</a>
+					</li>
+					<li class="nav-item dropdown my-2 my-sm-0">
+						<a class="nav-link dropdown-toggle btn btn-danger" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Menu
+						</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="/patients">Patients</a>
+							<a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">About</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="/login">Logout</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+	<!-- Sidebar -->
+	<!-- <div id="side_nav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<a href="/patients">Patients</a>
+		<a href="/patients">Records</a>
+		<a href="/dashboard">Dashboard</a>
+	</div> -->
+
+	<!-- Jumbotron -->
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+		  <h1 class="display-6">Record an Audio Session</h1>
+		  <p class="lead">Speak the following paragraph into your microphone in a tone that describes your mood currently. <i>Fusion</i>'s AI, powered by AssemblyAI, will analyze your voice to give you more accurate session results.</p>
+          <br>
+          <p style="padding-left: 40px; padding-right: 40px;" class="lead"><i>Naturally a human being is contrasting from other human beings. What makes us happy does not necessarily make others happy, but our desires and passions change with age. There are several principles that make us happy in every circumstance, such as being satisfied with what we have, never jealous of others' skills, displaying love for others, and not giving up in the face of adversity.</i></p>
+		  <br>
+		  <br>
+		  <div id="controls">
+			<button id="recordButton">Start Listening</button>
+			<button id="stopButton">Stop Listening</button>
+			<br>
+			<br>
+		    <p class="lead" style="display: none;" id="listening">LISTENING...</p>
+		    <p class="lead" style="display: none;" id="submitting">DONE. UPLOADING TO ASSEMBLYAI...</p>
+		</div>
+
+		</div>
+	</div>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">About this project</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			</div>
+			<div class="modal-body">
+				'''
+				#### General information
+
+				- **Patient:** John Doe
+				- **Since:** 09/09/2019
+				- **Last session:** 15/12/2019
+				- **Dominant Emotion:** schizophrenia
+				'''
+			</div>
+			<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+		</div>
+	</div>
+
+	<script>
+		document.getElementById("recordButton").addEventListener("click", () => {
+            document.getElementById("listening").style.display = "flex"
+        })
+
+		document.getElementById("stopButton").addEventListener("click", () => {
+            document.getElementById("listening").style.display = "none"
+            document.getElementById("submitting").style.display = "flex"
+        })
+
+		document.getElementById("stopButton").addEventListener("click", async _ => {
+            document.getElementById("listening").style.display = "none"
+            document.getElementById("submitting").style.display = "flex"
+
+			// try {
+			// 	const response = await fetch("/listen", {
+			// 		method: 'POST',
+			// 		body: {
+			// 			'status': 'post-yes'
+			// 		}
+			// 	});
+			// 	console.log("Request Posted successfully", response);
+			// } catch(err) {
+			// 	console.log(`Error: ${err}`);
+			// }
+
+			// setTimeout(() => { console.log("Sleeping"); }, 5000);
+			console.log("Sleeping")
+			await new Promise(r => setTimeout(r, 1500));
+			window.location.href = "/dashboardd"
+			console.log("Done sleeping")
+        })
+
+		function openNav() {
+			document.getElementById("side_nav").style.width = "250px";
+			document.getElementById("main").style.marginLeft = "250px";
+		}
+
+		function closeNav() {
+			document.getElementById("side_nav").style.width = "0";
+			document.getElementById("main").style.marginLeft= "0";
+		}
+	</script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+	<!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+    <script src="{{ url_for('static', filename='js/WebAudioRecorder.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}" ></script>
+	
+  </body>
+</html>
